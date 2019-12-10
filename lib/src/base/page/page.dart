@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:drive/drive.dart';
 import 'package:drive/src/base/page/widget.dart';
 import 'package:drive/src/manager/navigator.dart';
@@ -294,6 +296,23 @@ class BaseController {
   ///局部刷新数组
   Map<String, _StatefulState> _mapStates = {};
   List<_StatefulState> _listState =[];
+  ///判断是否点击第一次
+  List<String> _isTap=[];
+
+  bool _isFirstTime = true;
+
+  //防误触
+  Timer _timer;
+  ///防误触摸
+  void accidentPrevention(VoidCallback callback,{Duration duration=const Duration(milliseconds: 300)}){
+    if(_isFirstTime){
+      callback();
+      _isFirstTime = false;
+    }else{
+      _timer?.cancel();
+      _timer=Timer(duration, callback);
+    }
+  }
 
   ///添加局部刷新
   void _addState(_StatefulState state,{String k}) {
@@ -369,7 +388,10 @@ class BaseController {
 
   void onPause() {}
 
-  void dispose() {}
+  void dispose() {
+    _isFirstTime = true;
+    _timer?.cancel();
+  }
 
   void showLoading({String text}) {
     _loadingController.showLoading();
