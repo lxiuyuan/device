@@ -285,6 +285,7 @@ class BaseController {
   __PageWidgetState _state;
   BasePage _page;
 
+
   ///菊花圈控制器
   LoadingController _loadingController;
 
@@ -372,14 +373,6 @@ class BaseController {
 
   void dispose() {}
 
-  void showToastError(String toast) {
-    ToastUtils.showError(toast);
-  }
-
-  void showToastSuccess(String toast) {
-    ToastUtils.showSuccess(toast);
-  }
-
   void showLoading({String text}) {
     _loadingController.showLoading();
   }
@@ -388,25 +381,4 @@ class BaseController {
     _loadingController.dismissLoading();
   }
 
-  void showBottomDialog(Widget widget) {
-    showGeneralDialog(
-        context: context,
-        barrierDismissible: true,
-        barrierColor: Color(0x66000000),
-        transitionDuration: Duration(milliseconds: 400),
-        barrierLabel: "bottomDialog",
-        pageBuilder: (BuildContext context, Animation<double> animation,
-            Animation<double> secondaryAnimation) {
-          var startTween =
-              Tween<Offset>(begin: Offset(0.0, 1.0), end: Offset.zero);
-          final CurvedAnimation fadeAnimation = CurvedAnimation(
-            parent: animation,
-            curve: Cubic(0.3, 0.7, 0.01, 1.0),
-          );
-          return SlideTransition(
-              position: fadeAnimation.drive(startTween),
-              child:
-                  Container(alignment: Alignment.bottomCenter, child: widget));
-        });
-  }
 }
