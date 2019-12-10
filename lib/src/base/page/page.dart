@@ -335,11 +335,9 @@ class BaseController {
 
   ///刷新
   void setState({String k}) {
-    State state = _state;
     if (k != null) {
       if (_mapStates.containsKey(k)) {
-        state = _mapStates[k];
-        _setState(state);
+        _setState(_mapStates[k]);
       }
     }else{
       for (var value in _listState) {

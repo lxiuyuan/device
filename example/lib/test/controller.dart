@@ -14,7 +14,9 @@ class Test1Controller extends BaseController{
 
   void onClick(){
     text++;
+    text1++;
     setState();
+
   }
 
 
