@@ -304,10 +304,9 @@ class BaseController {
   //防误触
   Timer _timer;
   ///防误触摸
-  void accidentPrevention(VoidCallback callback,{Duration duration=const Duration(milliseconds: 300)}){
-    if(_isFirstTime){
+  void accidentPrevention(bool isFirstTime,VoidCallback callback,{Duration duration=const Duration(milliseconds: 300)}){
+    if(isFirstTime){
       callback();
-      _isFirstTime = false;
     }else{
       _timer?.cancel();
       _timer=Timer(duration, callback);
