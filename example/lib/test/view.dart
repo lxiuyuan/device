@@ -19,10 +19,18 @@ class Test1Page extends BasePage<Test1Controller> {
             children: <Widget>[
 
               Stateful(
-                k: controller.textKey,
+                  bind:()=> [controller.text],
                 builder: (context) {
                   print("textBuild");
                   return Text("${controller.text}");
+                }
+              ),
+
+              Stateful(
+                  bind:()=> [controller.text1],
+                builder: (context) {
+                  print("textBuild1");
+                  return Text("${controller.text1}");
                 }
               ),
           FlatButton(onPressed: controller.onClick, child: Text("click")),

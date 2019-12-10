@@ -5,6 +5,7 @@ class Test1Controller extends BaseController{
   final String textKey="text";
   Test1Controller() : super(Test1Page());
   int text=0;
+  int text1=0;
 
   @override
   void initState() {
@@ -12,7 +13,7 @@ class Test1Controller extends BaseController{
   }
 
   void onClick(){
-    text--;
+    text++;
     setState();
   }
 
