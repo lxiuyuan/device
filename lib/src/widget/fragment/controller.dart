@@ -36,7 +36,7 @@ class FragmentController {
   ///重新渲染回调，
   void resume(){
     var baseController=widget.children[this.index];
-    baseController.onResume();
+    baseController.resume();
     baseController.page?.onResume();
   }
 
@@ -44,7 +44,7 @@ class FragmentController {
   void pause({int i}){
     var index=i??this.index;
     var baseController=widget.children[index];
-    baseController.onPause();
+    baseController.pause();
     baseController.page?.onPause();
   }
 

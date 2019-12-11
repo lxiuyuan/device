@@ -2,9 +2,11 @@ import 'package:drive/drive.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'controller.dart';
+import 'fragment1.dart';
+import 'fragment2.dart';
+import 'fragment3.dart';
 
 class Test1Page extends BasePage<Test1Controller> {
-
   @override
   Widget build(BuildContext context) {
     print("allBuild");
@@ -12,18 +14,18 @@ class Test1Page extends BasePage<Test1Controller> {
       body: Container(
         child: Center(
           child: Column(
-            mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-
-              Stateful(bind: ()=>[controller.text],builder:(context){
-                print("textKey");
-                return Text("${controller.text}");
-              },),
-              Stateful(bind: ()=>[controller.text1],builder:(context){
-                print("textKey1");
-                return Text("${controller.text1}");
-              },),
-          FlatButton(onPressed: controller.onClick, child: Text("click")),
+              Expanded(
+                child: FragmentWidget(
+                  controller: c.fragmentController,
+                  children: <BaseController>[
+                    Fragment1Controller(),
+                    Fragment2Controller(),
+                    Fragment3Controller(),
+                  ],
+                ),
+              ),
+              FlatButton(onPressed: c.onClick, child: Text("切换"))
             ],
           ),
         ),

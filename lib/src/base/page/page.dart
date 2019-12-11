@@ -237,14 +237,14 @@ class __PageWidgetState extends State<_PageWidget> with OnAppLifecycleListener {
   @override
   void onResume() {
     basePage.onResume();
-    basePage._controller?.onResume();
+    basePage._controller?.resume();
     super.onResume();
   }
 
   @override
   void onPause() {
     basePage.onPause();
-    basePage._controller?.onPause();
+    basePage._controller?.pause();
     super.onPause();
   }
 
@@ -392,9 +392,9 @@ class BaseController {
 
   void initState() {}
 
-  void onResume() {}
+  void resume() {}
 
-  void onPause() {}
+  void pause() {}
 
   void dispose() {
     _isFirstTime = true;

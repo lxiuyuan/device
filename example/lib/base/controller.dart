@@ -6,25 +6,16 @@ class TestController extends BaseController{
   int text=0;
   TestController(BuildContext context) : super(TestPage());
 
-  @override
   void initState() {
-    super.initState();
-
   }
 
-  @override
-  void onResume() {
-    super.onResume();
+  void resume() {
   }
 
-  @override
-  void onPause() {
-    super.onPause();
+  void pause() {
   }
 
-  @override
   void dispose() {
-    super.dispose();
   }
 
   void onLoadingClick() async {

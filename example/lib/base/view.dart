@@ -8,6 +8,8 @@ class TestPage extends BasePage<TestController>  {
     super.initState();
   }
 
+  FragmentController fragmentController=new FragmentController();
+
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +20,7 @@ class TestPage extends BasePage<TestController>  {
       ),
       body: Container(
         child: Column(
-          children: <Widget>[
+          children: [
             FlatButton(onPressed: controller.onLoadingClick, child: Text("loading")),
             Stateful(k:controller.textKey,builder:(c)=> Text("${controller.text}s"),),
           ],
