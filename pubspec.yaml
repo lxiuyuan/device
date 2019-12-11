@@ -1,6 +1,6 @@
 name: drive
 description: new drive
-version: 0.10.3
+version: 0.10.4
 author:
 homepage:
 
@@ -11,9 +11,9 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_easyrefresh: 2.0.4
-  shared_preferences: any
   http: ^0.12.0
   dio: 3.0.0
+  shared_preferences: any
   path_provider: any
   crypto: ^2.0.6
   image_picker:  0.6.1+4

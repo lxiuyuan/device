@@ -147,6 +147,7 @@ abstract class BasePage<T extends BaseController> {
   BaseController _controller;
 
   T get controller => _controller;
+  T get c => _controller;
   LoadingController _loadingController = new LoadingController();
 
   BuildContext get context => _state?.context;
