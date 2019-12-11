@@ -1,8 +1,10 @@
+import 'package:drive/drive.dart';
 import 'package:flutter/material.dart';
 
 class FragmentController {
   State state;
   int index=0;
+  FragmentWidget get widget=>state.widget as FragmentWidget;
   GlobalKey stackKey=GlobalKey();
   void registerState(State state){
     this.state=state;
@@ -33,13 +35,17 @@ class FragmentController {
   }
   ///重新渲染回调，
   void resume(){
-    _visitorResumeElement(stackKey.currentContext as Element,_VisitorElement());
+    var baseController=widget.children[this.index];
+    baseController.onResume();
+    baseController.page?.onResume();
   }
 
-
+  //暂停回掉
   void pause({int i}){
     var index=i??this.index;
-    _visitorPauseElement(stackKey.currentContext as Element,_VisitorElement(),index);
+    var baseController=widget.children[index];
+    baseController.onPause();
+    baseController.page?.onPause();
   }
 
   void animToPage(int index){

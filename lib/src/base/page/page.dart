@@ -146,6 +146,15 @@ abstract class BasePage<T extends BaseController> {
   __PageWidgetState _state;
   BaseController _controller;
 
+  Widget _widget;
+
+  Widget get widget{
+    if(_widget==null){
+      _widget=_createWidget();
+    }
+    return _widget;
+  }
+
   T get controller => _controller;
   T get c => _controller;
   LoadingController _loadingController = new LoadingController();
@@ -177,7 +186,7 @@ abstract class BasePage<T extends BaseController> {
     }
   }
 
-  Widget createWidget() {
+  Widget _createWidget() {
     return _PageWidget(this);
   }
 
@@ -269,7 +278,7 @@ class BasePageRoute extends MaterialPageRoute {
     bool fullscreenDialog = false,
   }) : super(
             builder: (context) {
-              return build(context).createWidget();
+              return build(context).widget;
             },
             settings: settings,
             maintainState: maintainState,
@@ -279,14 +288,13 @@ class BasePageRoute extends MaterialPageRoute {
 typedef BasePageRouteBuilder = BasePage Function(BuildContext context);
 
 class BaseController {
-  BaseController(BasePage page) {
-    _page = page;
-    _page._registerController(this);
+  BaseController(this.page) {
+    page._registerController(this);
 //    _startPage();
   }
 
   __PageWidgetState _state;
-  BasePage _page;
+  BasePage page;
 
 
   ///菊花圈控制器
@@ -348,7 +356,7 @@ class BaseController {
   Future<dynamic> push() async {
     await Navigator.of(WsyMaterialApp.context)
         .push(MaterialPageRoute(builder: (context) {
-      return _page.createWidget();
+      return page.widget;
     }));
   }
 

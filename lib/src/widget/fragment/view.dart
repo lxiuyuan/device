@@ -1,11 +1,12 @@
 
+import 'package:drive/drive.dart';
 import 'package:flutter/material.dart';
 
 import 'controller.dart';
 export 'controller.dart';
 
 class FragmentWidget extends StatefulWidget {
-  final List<Widget> children;
+  final List<BaseController> children;
   final FragmentController controller;
 
   FragmentWidget({@required this.controller,  this.children});
@@ -32,7 +33,9 @@ class _FragmentWidgetState extends State<FragmentWidget> {
       child: IndexedStack(
         key: controller.stackKey,
         index: controller.index,
-        children: widget.children,
+        children: widget.children.map((BaseController controller){
+          return controller.page.widget;
+        }).toList(),
       ),
     );
 
