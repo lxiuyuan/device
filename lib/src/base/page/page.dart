@@ -145,14 +145,8 @@ class _StatefulState extends State<Stateful> {
 abstract class BasePage<T extends BaseController> {
   __PageWidgetState _state;
   BaseController _controller;
-
-  Widget _widget;
-
   Widget get widget{
-    if(_widget==null){
-      _widget=_createWidget();
-    }
-    return _widget;
+    return _createWidget();
   }
 
   T get controller => _controller;
