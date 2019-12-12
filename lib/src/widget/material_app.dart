@@ -37,7 +37,7 @@ class WsyMaterialApp extends MaterialApp {
   }) : super(
           key: key,
           navigatorKey: navigatorKey,
-          home: DriveBuilder(child: home),
+          home: home==null?null:DriveBuilder(child: home),
           routes: routes,
           initialRoute: initialRoute,
           onGenerateRoute: onGenerateRoute,

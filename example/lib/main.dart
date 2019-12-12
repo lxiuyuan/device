@@ -54,7 +54,7 @@ class _MyAppState extends State<MyApp> {
           builder: (context) {
             return Center(
               child: FlatButton(child: Text("drive"),onPressed: (){
-                Test1Controller().push();
+                Test1Controller().push(context);
               },),
             );
           }

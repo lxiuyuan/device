@@ -9,7 +9,7 @@ class Routes{
    static String home="page/home";
 
    ///跳转测试界面
-   static Future<dynamic> pushTest()=>Test1Controller().push();
+//   static Future<dynamic> pushTest()=>Test1Controller().push();
 
 
 

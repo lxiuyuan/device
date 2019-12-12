@@ -353,8 +353,8 @@ class BaseController {
     initState();
   }
 
-  Future<dynamic> push() async {
-    await Navigator.of(WsyMaterialApp.context)
+  Future<dynamic> push(BuildContext context) async {
+    await Navigator.of(context)
         .push(MaterialPageRoute(builder: (context) {
       return page.widget;
     }));
