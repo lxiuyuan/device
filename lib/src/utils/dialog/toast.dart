@@ -52,7 +52,7 @@ class Toast extends StatelessWidget {
         decoration: BoxDecoration(boxShadow: [
           new BoxShadow(
             color: Color(0xff666666), //阴影颜色
-            blurRadius: 3.0, //阴影大小
+            blurRadius: 1.0, //阴影大小
           ),
         ], color: backgroundColor, borderRadius: BorderRadius.circular(16)),
         child: Column(

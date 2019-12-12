@@ -15,6 +15,8 @@ class Test1Controller extends BaseController{
   }
 
   void onClick(){
+    ToastUtils.show("000");
+    return;
     text++;
     text1=text%3;
     fragmentController.animToPage(text1);
