@@ -5,8 +5,10 @@ import 'package:drive/src/utils/sp.dart';
 import 'navigator/view.dart';
 
 class WsyMaterialApp extends MaterialApp {
-  static DialogNavigatorController navigatorController = DialogNavigatorController();
+  static DialogNavigatorController navigatorController =
+      DialogNavigatorController();
   static BuildContext context;
+
   WsyMaterialApp({
     Key key,
     GlobalKey<NavigatorState> navigatorKey,
@@ -15,7 +17,7 @@ class WsyMaterialApp extends MaterialApp {
     String initialRoute,
     RouteFactory onGenerateRoute,
     RouteFactory onUnknownRoute,
-    List<NavigatorObserver> navigatorObservers ,
+    List<NavigatorObserver> navigatorObservers,
     TransitionBuilder builder,
     String title = '',
     GenerateAppTitle onGenerateTitle,
@@ -42,9 +44,14 @@ class WsyMaterialApp extends MaterialApp {
           initialRoute: initialRoute,
           onGenerateRoute: onGenerateRoute,
           onUnknownRoute: onUnknownRoute,
-          navigatorObservers: <NavigatorObserver>[DriveNavigatorManager.manager],
+          navigatorObservers: <NavigatorObserver>[
+            DriveNavigatorManager.manager
+          ],
           builder: (context, child) {
 //            WsyMaterialApp.context=context;
+            if (child == null) {
+              return null;
+            }
             var widget = Stack(
               children: <Widget>[
                 child,
@@ -75,30 +82,31 @@ class WsyMaterialApp extends MaterialApp {
           checkerboardRasterCacheImages: checkerboardRasterCacheImages,
           checkerboardOffscreenLayers: checkerboardOffscreenLayers,
           debugShowCheckedModeBanner: debugShowCheckedModeBanner,
-        ){
+        ) {
 //    SpUtils.init();
   }
 }
 
-
 class DriveBuilder extends StatefulWidget {
   final Widget child;
+
   DriveBuilder({this.child});
+
   @override
   _DriveBuilderState createState() => _DriveBuilderState();
 }
 
 class _DriveBuilderState extends State<DriveBuilder> {
   @override
-  void initState()  {
+  void initState() {
     super.initState();
-     Future.delayed(Duration(milliseconds: 200),(){
-       WsyMaterialApp.context=context;
-     });
+    Future.delayed(Duration(milliseconds: 200), () {
+      WsyMaterialApp.context = context;
+    });
   }
+
   @override
   Widget build(BuildContext context) {
     return widget.child;
   }
 }
-

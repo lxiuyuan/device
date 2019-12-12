@@ -4,7 +4,12 @@ import 'package:flutter/material.dart';
 class FragmentController {
   State state;
   int index=0;
-  FragmentWidget get widget=>state.widget as FragmentWidget;
+  FragmentWidget get widget{
+    if(state?.widget==null){
+      return null;
+    }
+    return state.widget as FragmentWidget;
+  }
   GlobalKey stackKey=GlobalKey();
   void registerState(State state){
     this.state=state;
@@ -35,6 +40,9 @@ class FragmentController {
   }
   ///重新渲染回调，
   void resume(){
+    if(widget==null){
+      return;
+    }
     var baseController=widget.children[this.index];
     baseController.resume();
     baseController.page?.onResume();
@@ -42,6 +50,9 @@ class FragmentController {
 
   //暂停回掉
   void pause({int i}){
+    if(widget==null){
+      return;
+    }
     var index=i??this.index;
     var baseController=widget.children[index];
     baseController.pause();
