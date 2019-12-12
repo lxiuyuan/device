@@ -8,6 +8,7 @@ export 'src/widget/refresh/view.dart';
 export 'src/widget/tab/view.dart';
 export 'src/widget/material_app.dart';
 export 'src/widget/system_state_bar.dart';
+export 'src/utils/dialog/toast.dart';
 export 'src/utils/db.dart';
 export 'src/utils/http.dart';
 export 'src/utils/image_picker.dart';
