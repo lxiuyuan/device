@@ -86,17 +86,6 @@ class CachedNetworkImage extends ImageProvider<CachedNetworkImage> {
   }
 
 
-  @override
-  ImageStreamCompleter load(CachedNetworkImage key) {
-    return MultiFrameImageStreamCompleter(
-
-      codec: _loadAsync(key),
-      scale: key.scale,
-      informationCollector:() sync* {
-        yield ErrorDescription('Path:error');
-      },
-    );
-  }
 
   //进行下载加载
   Future<Codec> _loadAsync(CachedNetworkImage key) async {
@@ -178,5 +167,17 @@ class CachedNetworkImage extends ImageProvider<CachedNetworkImage> {
     }
 
     return null;
+  }
+
+  @override
+  ImageStreamCompleter load(CachedNetworkImage key) {
+    return  MultiFrameImageStreamCompleter(
+
+      codec: _loadAsync(key),
+      scale: key.scale,
+      informationCollector:() sync* {
+        yield ErrorDescription('Path:error');
+      },
+    );
   }
 }

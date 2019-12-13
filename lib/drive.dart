@@ -13,6 +13,7 @@ export 'src/utils/db.dart';
 export 'src/utils/http.dart';
 export 'src/utils/image_picker.dart';
 export 'src/utils/sp.dart';
+export 'src/utils/dialog/dialog.dart';
 
 class Drive {
   static const MethodChannel _channel =
