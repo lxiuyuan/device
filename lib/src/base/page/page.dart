@@ -8,6 +8,20 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'loading.dart';
 
+class ControllerWidget<T extends BaseController> extends StatelessWidget{
+  T controller;
+  final Widget Function(T controller) builder;
+  ControllerWidget({this.builder});
+  @override
+  Widget build(BuildContext context) {
+    if(controller==null){
+      controller=ControllerInherited.of(context).controller;
+    }
+    return builder(controller);
+  }
+
+}
+
 class Stateful extends StatefulWidget {
   final String k;
   final List<dynamic> Function() bind;
