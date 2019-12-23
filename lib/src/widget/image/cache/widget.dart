@@ -170,7 +170,7 @@ class CachedNetworkImage extends ImageProvider<CachedNetworkImage> {
   }
 
   @override
-  ImageStreamCompleter load(CachedNetworkImage key,s) {
+  ImageStreamCompleter load(CachedNetworkImage key) {
     return  MultiFrameImageStreamCompleter(
 
       codec: _loadAsync(key),
