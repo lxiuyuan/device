@@ -55,7 +55,7 @@ class Stateful extends StatefulWidget {
 
 class _StatefulState extends State<Stateful> {
   BaseController controller;
-  List<dynamic> oldDiffs;
+  List<dynamic> oldDiffs=[];
 
   @override
   void initState() {
@@ -66,7 +66,8 @@ class _StatefulState extends State<Stateful> {
 
 
       if (widget.bind != null) {
-        oldDiffs = widget.bind();
+        oldDiffs.clear();
+        oldDiffs .addAll(widget.bind()??[]);
         controller._addState(this);
       }
       if(widget.k!=null){
@@ -78,26 +79,34 @@ class _StatefulState extends State<Stateful> {
   @override
   void didUpdateWidget(Stateful oldWidget) {
     if (widget.bind != null) {
-      oldDiffs = widget.bind();
+      oldDiffs.clear();
+      oldDiffs .addAll(widget.bind()??[]);
+      setState(() {
+
+      });
     }
 
     super.didUpdateWidget(oldWidget);
   }
 
-  void _refresh(List<dynamic> diffs) {
-    oldDiffs = diffs;
+  void _refresh() {
     setState(() {
     });
   }
 
   void setDiffState() {
+    var _oldDiffs=<dynamic>[];
+    _oldDiffs.addAll(oldDiffs??[]);
     var diffs = widget.bind();
-    if (oldDiffs== null) {
-      _refresh(diffs);
+    oldDiffs.clear();
+    oldDiffs.addAll(diffs??[]);
+    if (_oldDiffs== null) {
+      _refresh();
       return;
     }
-    if(_listDiff(diffs,oldDiffs)){
-      _refresh(diffs);
+    var isDiff=_listDiff(diffs,_oldDiffs);
+    if(isDiff){
+      _refresh();
     }
   }
   ///对比list是否一样
