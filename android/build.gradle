@@ -13,6 +13,24 @@ buildscript {
         classpath 'com.android.tools.build:gradle:3.2.1'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
+
+//    subprojects {
+//        project.configurations.all {
+//            resolutionStrategy.eachDependency { details ->
+////                androidx.arch.core:core-common:2.0.1
+//                if(details.requested.group=='androidx.arch.core'){
+//                    if(details.requested.name=='core-common'){
+//                        details.useVersion "2.0.0"
+//                    }
+//                    if(details.requested.name=='core-runtime'){
+//                        details.useVersion "2.0.0"
+//                    }
+//                }
+//
+//            }
+//        }
+//    }
+
 }
 
 rootProject.allprojects {
@@ -34,7 +52,7 @@ android {
     }
     defaultConfig {
         minSdkVersion 16
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     lintOptions {
         disable 'InvalidPackage'

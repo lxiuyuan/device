@@ -8,6 +8,26 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'loading.dart';
 
+
+abstract class BaseState<T extends StatefulWidget,S extends BaseController> extends State<T>{
+  S _controller;
+  S get controller {
+    if(_controller==null) {
+      var inherited = ControllerInherited.of(context);
+      _controller = inherited.controller;
+    }
+    return _controller;
+  }
+  S get c {
+    if(_controller==null) {
+      var inherited = ControllerInherited.of(context);
+      _controller = inherited.controller;
+    }
+    return _controller;
+  }
+
+}
+
 class ControllerWidget<T extends BaseController> extends StatelessWidget{
   T controller;
   final Widget Function(T controller) builder;
@@ -85,9 +105,6 @@ class _StatefulState extends State<Stateful> {
     if (newList.length != oldList.length) {
       return true;
     }
-    if (newList == oldList) {
-      return false;
-    }
     var diffs = newList;
     var oldDiffs = oldList;
     for (int i = 0; i < diffs.length; i++) {
@@ -102,9 +119,6 @@ class _StatefulState extends State<Stateful> {
   bool _mapDiff(Map newMap, Map oldMap) {
     if (newMap.length != oldMap.length) {
       return true;
-    }
-    if (newMap == oldMap) {
-      return false;
     }
     var newKey = newMap.keys;
     for (var key in newKey) {
