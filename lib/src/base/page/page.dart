@@ -55,23 +55,22 @@ class Stateful extends StatefulWidget {
 
 class _StatefulState extends State<Stateful> {
   BaseController controller;
-  List<dynamic> oldDiffs=[];
+  List<dynamic> oldDiffs = [];
 
   @override
   void initState() {
     super.initState();
+
     Future.delayed(Duration(milliseconds: 100), () {
       var inherited = ControllerInherited.of(context);
       controller = inherited.controller;
 
-
       if (widget.bind != null) {
-        oldDiffs.clear();
-        oldDiffs .addAll(widget.bind()??[]);
+        oldDiffs = _listNew(widget.bind());
         controller._addState(this);
       }
-      if(widget.k!=null){
-        controller._addState(this,k:widget.k);
+      if (widget.k != null) {
+        controller._addState(this, k: widget.k);
       }
     });
   }
@@ -79,36 +78,36 @@ class _StatefulState extends State<Stateful> {
   @override
   void didUpdateWidget(Stateful oldWidget) {
     if (widget.bind != null) {
-      oldDiffs.clear();
-      oldDiffs .addAll(widget.bind()??[]);
-      setState(() {
-
-      });
+      oldDiffs = _listNew(widget.bind());
+      setState(() {});
     }
 
     super.didUpdateWidget(oldWidget);
   }
 
   void _refresh() {
-    setState(() {
-    });
+    setState(() {});
   }
 
-  void setDiffState() {
-    var _oldDiffs=<dynamic>[];
-    _oldDiffs.addAll(oldDiffs??[]);
+  void setDiffState({String tag}) {
+    var _oldDiffs = <dynamic>[];
+    _oldDiffs.addAll(oldDiffs);
     var diffs = widget.bind();
     oldDiffs.clear();
-    oldDiffs.addAll(diffs??[]);
-    if (_oldDiffs== null) {
+    oldDiffs = _listNew(diffs);
+    if (_oldDiffs == null) {
       _refresh();
       return;
     }
-    var isDiff=_listDiff(diffs,_oldDiffs);
-    if(isDiff){
-      _refresh();
+    var isDiff = _listDiff(diffs, _oldDiffs);
+    if (tag != null) {
+      print("${tag}:${isDiff}--${_oldDiffs}+++++${diffs}");
     }
+    if (isDiff) {
+      _refresh();
+    } else {}
   }
+
   ///对比list是否一样
   bool _listDiff(List newList, List oldList) {
     if (newList.length != oldList.length) {
@@ -131,7 +130,7 @@ class _StatefulState extends State<Stateful> {
     }
     var newKey = newMap.keys;
     for (var key in newKey) {
-      if(!oldMap.containsKey(key)){
+      if (!oldMap.containsKey(key)) {
         return true;
       }
       if (_diffValue(newMap[key], oldMap[key])) {
@@ -139,7 +138,7 @@ class _StatefulState extends State<Stateful> {
       }
       oldMap.remove(key);
     }
-    if(oldMap.length>0){
+    if (oldMap.length > 0) {
       return true;
     }
     return false;
@@ -154,22 +153,40 @@ class _StatefulState extends State<Stateful> {
       if (_listDiff(newValue, oldValue)) {
         return true;
       }
-    }
-    if (newValue is Map) {
+    } else if (newValue is Map) {
       if (_mapDiff(newValue, oldValue)) {
         return true;
       }
     }
+
     if (newValue != oldValue) {
       return true;
     }
     return false;
   }
 
+  List _listNew(List list) {
+    for (int i = 0; i < list?.length??0; i++) {
+      var item = list[i];
+      if (item is List) {
+        List l = [];
+        l.addAll(item);
+        list[i] = l;
+      } else if (item is Map) {
+        Map m = {};
+        m.addAll(item);
+        list[i] = m;
+      }
+    }
+    List newList = [];
+    if (list != null) newList.addAll(list);
+    return newList;
+  }
+
   @override
   void dispose() {
     controller._removeState(state: this);
-    controller._removeState(k:widget.k);
+    controller._removeState(k: widget.k);
     super.dispose();
   }
 
@@ -178,6 +195,7 @@ class _StatefulState extends State<Stateful> {
     return widget.builder(context);
   }
 }
+
 
 abstract class BasePage<T extends BaseController> {
   __PageWidgetState _state;
