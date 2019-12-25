@@ -268,7 +268,7 @@ class _PageWidget extends StatefulWidget {
   __PageWidgetState createState() => __PageWidgetState();
 }
 
-class __PageWidgetState extends State<_PageWidget> with OnAppLifecycleListener {
+class __PageWidgetState extends State<_PageWidget> with OnAppLifecycleListener,SingleTickerProviderStateMixin {
   BasePage basePage;
 
   @override
@@ -279,9 +279,7 @@ class __PageWidgetState extends State<_PageWidget> with OnAppLifecycleListener {
     super.initState();
   }
 
-  void showLoading({String text}) {}
 
-  void dismissLoading() {}
 
   @override
   void onResume() {
@@ -345,6 +343,14 @@ class BaseController {
   __PageWidgetState _state;
   BasePage page;
 
+  AnimationController _animationController;
+
+  AnimationController get animationController{
+    if(_animationController==null){
+      _animationController=AnimationController(vsync: _state);
+    }
+    return _animationController;
+  }
 
   ///菊花圈控制器
   LoadingController _loadingController;
