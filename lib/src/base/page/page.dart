@@ -276,6 +276,9 @@ class __PageWidgetState extends State<_PageWidget> with OnAppLifecycleListener,S
     this.basePage = widget.basePage;
     basePage._registerState(this);
     basePage.initState();
+    Future.delayed(Duration(milliseconds: 50),(){
+      basePage._controller?.initState();
+    });
     super.initState();
   }
 
@@ -405,7 +408,6 @@ class BaseController {
 
   void _registerState(__PageWidgetState state) {
     this._state = state;
-    initState();
   }
 
   Future<dynamic> push(BuildContext context) async {
