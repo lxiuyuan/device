@@ -93,7 +93,8 @@ class _StatefulState extends State<Stateful> {
     var _oldDiffs = <dynamic>[];
     _oldDiffs.addAll(oldDiffs);
     var diffs = widget.bind();
-    oldDiffs.clear();
+    print("oldDiffs:${_oldDiffs}");
+    print("diffs:${diffs}");
     oldDiffs = _listNew(diffs);
     if (_oldDiffs == null) {
       _refresh();
