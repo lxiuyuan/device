@@ -8,38 +8,40 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'loading.dart';
 
-
-abstract class BaseState<T extends StatefulWidget,S extends BaseController> extends State<T>{
+abstract class BaseState<T extends StatefulWidget, S extends BaseController>
+    extends State<T> {
   S _controller;
+
   S get controller {
-    if(_controller==null) {
-      var inherited = ControllerInherited.of(context);
-      _controller = inherited.controller;
-    }
-    return _controller;
-  }
-  S get c {
-    if(_controller==null) {
+    if (_controller == null) {
       var inherited = ControllerInherited.of(context);
       _controller = inherited.controller;
     }
     return _controller;
   }
 
+  S get c {
+    if (_controller == null) {
+      var inherited = ControllerInherited.of(context);
+      _controller = inherited.controller;
+    }
+    return _controller;
+  }
 }
 
-class ControllerWidget<T extends BaseController> extends StatelessWidget{
+class ControllerWidget<T extends BaseController> extends StatelessWidget {
   T controller;
   final Widget Function(T controller) builder;
+
   ControllerWidget({this.builder});
+
   @override
   Widget build(BuildContext context) {
-    if(controller==null){
-      controller=ControllerInherited.of(context).controller;
+    if (controller == null) {
+      controller = ControllerInherited.of(context).controller;
     }
     return builder(controller);
   }
-
 }
 
 class Stateful extends StatefulWidget {
@@ -61,18 +63,19 @@ class _StatefulState extends State<Stateful> {
   void initState() {
     super.initState();
 
-    Future.delayed(Duration(milliseconds: 100), () {
-      var inherited = ControllerInherited.of(context);
-      controller = inherited.controller;
+  }
 
-      if (widget.bind != null) {
-        oldDiffs = _listNew(widget.bind());
-        controller._addState(this);
-      }
-      if (widget.k != null) {
-        controller._addState(this, k: widget.k);
-      }
-    });
+  void _init() {
+    var inherited = ControllerInherited.of(context);
+    controller = inherited.controller;
+
+    if (widget.bind != null) {
+      oldDiffs = _listNew(widget.bind());
+      controller._addState(this);
+    }
+    if (widget.k != null) {
+      controller._addState(this, k: widget.k);
+    }
   }
 
   @override
@@ -167,7 +170,7 @@ class _StatefulState extends State<Stateful> {
   }
 
   List _listNew(List list) {
-    for (int i = 0; i < list?.length??0; i++) {
+    for (int i = 0; i < list?.length ?? 0; i++) {
       var item = list[i];
       if (item is List) {
         List l = [];
@@ -193,19 +196,23 @@ class _StatefulState extends State<Stateful> {
 
   @override
   Widget build(BuildContext context) {
+    if(controller==null){
+      _init();
+    }
     return widget.builder(context);
   }
 }
 
-
 abstract class BasePage<T extends BaseController> {
   __PageWidgetState _state;
   BaseController _controller;
-  Widget get widget{
+
+  Widget get widget {
     return _createWidget();
   }
 
   T get controller => _controller;
+
   T get c => _controller;
   LoadingController _loadingController = new LoadingController();
 
@@ -269,7 +276,8 @@ class _PageWidget extends StatefulWidget {
   __PageWidgetState createState() => __PageWidgetState();
 }
 
-class __PageWidgetState extends State<_PageWidget> with OnAppLifecycleListener,SingleTickerProviderStateMixin {
+class __PageWidgetState extends State<_PageWidget>
+    with OnAppLifecycleListener, SingleTickerProviderStateMixin {
   BasePage basePage;
 
   @override
@@ -277,13 +285,11 @@ class __PageWidgetState extends State<_PageWidget> with OnAppLifecycleListener,S
     this.basePage = widget.basePage;
     basePage._registerState(this);
     basePage.initState();
-    Future.delayed(Duration(milliseconds: 50),(){
+    Future.delayed(Duration(milliseconds: 50), () {
       basePage._controller?.initState();
     });
     super.initState();
   }
-
-
 
   @override
   void onResume() {
@@ -349,9 +355,9 @@ class BaseController {
 
   AnimationController _animationController;
 
-  AnimationController get animationController{
-    if(_animationController==null){
-      _animationController=AnimationController(vsync: _state);
+  AnimationController get animationController {
+    if (_animationController == null) {
+      _animationController = AnimationController(vsync: _state);
     }
     return _animationController;
   }
@@ -363,45 +369,48 @@ class BaseController {
 
   ///局部刷新数组
   Map<String, _StatefulState> _mapStates = {};
-  List<_StatefulState> _listState =[];
+  List<_StatefulState> _listState = [];
+
   ///判断是否点击第一次
-  List<String> _isTap=[];
+  List<String> _isTap = [];
 
   bool _isFirstTime = true;
 
   //防误触
   Timer _timer;
+
   ///防误触摸
-  void accidentPrevention(bool isFirstTime,VoidCallback callback,{Duration duration=const Duration(milliseconds: 300)}){
-    if(isFirstTime){
+  void accidentPrevention(bool isFirstTime, VoidCallback callback,
+      {Duration duration = const Duration(milliseconds: 300)}) {
+    if (isFirstTime) {
       callback();
-    }else{
+    } else {
       _timer?.cancel();
-      _timer=Timer(duration, callback);
+      _timer = Timer(duration, callback);
     }
   }
 
   ///添加局部刷新
-  void _addState(_StatefulState state,{String k}) {
+  void _addState(_StatefulState state, {String k}) {
     ///判断是对比差别方式还是key方式
-    if(k==null){
-      if(!_listState.contains(state)){
+    if (k == null) {
+      if (!_listState.contains(state)) {
         _listState.add(state);
       }
-    }else {
-      _removeState(k:k);
+    } else {
+      _removeState(k: k);
       _mapStates[k] = state;
     }
   }
 
   ///删除局部刷新
-  void _removeState({String k,_StatefulState state}) {
-    if(k!=null){
+  void _removeState({String k, _StatefulState state}) {
+    if (k != null) {
       if (_mapStates.containsKey(k)) {
         _mapStates.remove(k);
       }
-    }else if(state!=null){
-      if(_listState.contains(state)){
+    } else if (state != null) {
+      if (_listState.contains(state)) {
         _listState.remove(state);
       }
     }
@@ -412,8 +421,7 @@ class BaseController {
   }
 
   Future<dynamic> push(BuildContext context) async {
-    await Navigator.of(context)
-        .push(MaterialPageRoute(builder: (context) {
+    await Navigator.of(context).push(MaterialPageRoute(builder: (context) {
       return page.widget;
     }));
   }
@@ -424,14 +432,14 @@ class BaseController {
       if (_mapStates.containsKey(k)) {
         _setState(_mapStates[k]);
       }
-    }else{
+    } else {
       for (var value in _listState) {
         value.setDiffState();
       }
     }
   }
 
-  void setRootState(){
+  void setRootState() {
     _setState(_state);
   }
 
@@ -466,5 +474,4 @@ class BaseController {
   void dismissLoading() {
     _loadingController.dismissLoading();
   }
-
 }
