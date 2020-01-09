@@ -283,9 +283,7 @@ class __PageWidgetState extends State<_PageWidget>
     this.basePage = widget.basePage;
     basePage._registerState(this);
     basePage.initState();
-    Future.delayed(Duration(milliseconds: 50), () {
-      basePage._controller?.initState();
-    });
+    basePage._controller?.initState();
     super.initState();
   }
 
