@@ -27,16 +27,16 @@ class SpUtils{
     }
   }
 
-  static void setJson(String key,Map<String,dynamic> value) async{
+  static Future<bool> setJson(String key,Map<String,dynamic> value) async{
     await init();
     var str=_mJsonEncoder.convert(value);
-    _sharedPreferences.setString(key, str);
+    return await _sharedPreferences.setString(key, str);
   }
 
   ///保存string字符串
-  static void setString(String key,String value)async {
+  static Future<bool> setString(String key,String value)async {
     await init();
-    _sharedPreferences.setString(key, value);
+    return await _sharedPreferences.setString(key, value);
   }
   ///获取StringList
   static Future<List<String>> getStringList(String key) async {
@@ -44,9 +44,9 @@ class SpUtils{
     return _sharedPreferences.getStringList(key);
   }
   ///保存StringList
-  static void setStringList(String key,List<String> value)async{
+  static Future<bool > setStringList(String key,List<String> value)async{
     await init();
-    _sharedPreferences.setStringList(key, value);
+    return await _sharedPreferences.setStringList(key, value);
   }
 
   static Future<void> init() async {

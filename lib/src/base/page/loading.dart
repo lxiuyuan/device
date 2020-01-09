@@ -89,7 +89,11 @@ class LoadingController {
       return;
     }
     isLoading = true;
-    _animController.forward(from: animValue);
+    if(_animController!=null) {
+      _animController.forward(from: animValue);
+    }else{
+      animValue=1.0;
+    }
   }
 
   void dismissLoading() {
@@ -97,7 +101,11 @@ class LoadingController {
       return;
     }
     isLoading = false;
-    _animController.reverse(from: animValue);
+    if(_animController!=null) {
+      _animController.reverse(from: animValue);
+    }else{
+      animValue=0.0;
+    }
   }
 }
 

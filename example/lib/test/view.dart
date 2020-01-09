@@ -8,6 +8,14 @@ import 'fragment3.dart';
 
 class Test1Page extends BasePage<Test1Controller> {
   @override
+  void initState() {
+    c.showLoading();
+    Future.delayed(Duration(milliseconds: 3999)).then((s){
+      c.dismissLoading();
+    });
+    super.initState();
+  }
+  @override
   Widget build(BuildContext context) {
     print("allBuild");
     return Scaffold(
