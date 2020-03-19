@@ -10,7 +10,7 @@ class HttpUtils {
 
   //json转换框架
   static JsonDecoder _mJsonDecoder = JsonDecoder();
-  static Map<String, String> _errorJson = null;
+  static Map<String, String> _errorJson = {};
 
   static void setErrorJson(Map<String, dynamic> json) {
     _errorJson = json;

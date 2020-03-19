@@ -417,7 +417,7 @@ class BaseController {
   }
 
   Future<dynamic> push(BuildContext context) async {
-    await Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+    return await Navigator.of(context).push(MaterialPageRoute(builder: (context) {
       return page.widget;
     }));
   }
