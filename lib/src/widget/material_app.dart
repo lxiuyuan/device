@@ -4,12 +4,12 @@ import 'package:drive/src/utils/sp.dart';
 
 import 'navigator/view.dart';
 
-class WsyMaterialApp extends MaterialApp {
+class MvcMaterialApp extends MaterialApp {
   static DialogNavigatorController navigatorController =
       DialogNavigatorController();
   static BuildContext context;
 
-  WsyMaterialApp({
+  MvcMaterialApp({
     Key key,
     GlobalKey<NavigatorState> navigatorKey,
     Widget home,
@@ -101,7 +101,7 @@ class _DriveBuilderState extends State<DriveBuilder> {
   void initState() {
     super.initState();
     Future.delayed(Duration(milliseconds: 200), () {
-      WsyMaterialApp.context = context;
+      MvcMaterialApp.context = context;
     });
   }
 

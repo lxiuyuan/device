@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:flutter/services.dart';
-export 'src/base/page/page.dart';
-export 'src/widget/fragment/view.dart';
+//export 'src/base/page/page.dart';
+//export 'src/widget/fragment/view.dart';
 export 'src/widget/image/cache/view.dart';
 export 'src/widget/keyboard/view.dart';
 export 'src/widget/refresh/view.dart';
@@ -15,6 +15,7 @@ export 'src/utils/image_picker.dart';
 export 'src/utils/sp.dart';
 export 'src/utils/dialog/dialog.dart';
 export 'src/utils/dialog/loading.dart';
+export 'src/widget/scroll/view.dart';
 
 class Drive {
   static const MethodChannel _channel =

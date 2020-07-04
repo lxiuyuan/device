@@ -8,7 +8,7 @@ class DialogUtils {
       bool barrierDismissible = true,
       String tag = "",
       VoidCallback onDismissListener}) {
-    WsyMaterialApp.navigatorController.show(widget, type,
+    MvcMaterialApp.navigatorController.show(widget, type,
         tag: tag,
         barrierDismissible: barrierDismissible,
         onDismissListener: onDismissListener,
@@ -18,7 +18,7 @@ class DialogUtils {
   //展示right弹窗
   static void showRightDialog(Widget widget,
       {String type = "right", VoidCallback onDismissListener}) {
-    WsyMaterialApp.navigatorController.show(
+    MvcMaterialApp.navigatorController.show(
       widget,
       type,
       alignment: Alignment.centerRight,
@@ -33,7 +33,7 @@ class DialogUtils {
 //展示bottom弹窗
   static void showBottomDialog(Widget widget,
       {String type = "bottom", VoidCallback onDismissListener}) {
-    WsyMaterialApp.navigatorController.show(
+    MvcMaterialApp.navigatorController.show(
       widget,
       type,
       alignment: Alignment.bottomCenter,
@@ -58,7 +58,7 @@ class DialogUtils {
   }
 
   static void dismissDialog(String type) {
-    WsyMaterialApp.navigatorController.dismiss(type);
+    MvcMaterialApp.navigatorController.dismiss(type);
   }
 
   static final Animatable<double> _dialogScaleTween =

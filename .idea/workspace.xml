@@ -5,11 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="eddbd8e5-aacf-4690-9b6a-e2ea9e7e9634" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/lib/src/widget/scroll/child.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/src/widget/scroll/controller.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/src/widget/scroll/view.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/drive/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/drive/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/drive/lib/src/utils/http.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/drive/lib/src/utils/http.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/base/page/page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/base/page/page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/utils/http.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/utils/http.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/android/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/drive.iml" beforeDir="false" afterPath="$PROJECT_DIR$/drive.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/example/.flutter-plugins-dependencies" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/example/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/drive.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/drive.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/utils/dialog/dialog.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/utils/dialog/dialog.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/widget/fragment/controller.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/widget/fragment/view.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/widget/material_app.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/widget/material_app.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -21,7 +33,7 @@
   <component name="DefaultGradleProjectSettings">
     <option name="isMigrated" value="true" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="8175f96b" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="Pixel_3_API_29" />
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
@@ -40,20 +52,20 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="dart.analysis.tool.window.force.activate" value="false" />
     <property name="io.flutter.reload.alreadyRun" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/src/utils/dialog" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/src/widget" />
     <property name="settings.editor.selected.configurable" value="flutter.settings" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/lib/src/manager" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/lib/src/widget" />
       <recent name="$PROJECT_DIR$/lib/src/utils/dialog" />
       <recent name="$PROJECT_DIR$/example/lib/test" />
       <recent name="$PROJECT_DIR$/lib/src/base/page" />
-      <recent name="$PROJECT_DIR$/lib/src/widget" />
       <recent name="$PROJECT_DIR$/lib/src/utils" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/lib/src/manager" />
     </key>
   </component>
   <component name="RunDashboard">

@@ -37,32 +37,32 @@ class WsyRefresh extends EasyRefresh {
     bool bottomBouncing = true,
     @required List<Widget> slivers,
   }) : super.custom(
-            key: key,
-            controller: controller,
-            onRefresh: onRefresh,
-            onLoad: onLoad,
-            enableControlFinishRefresh: enableControlFinishRefresh,
-            enableControlFinishLoad: enableControlFinishLoad,
-            taskIndependence: taskIndependence,
-            header: header ?? WsyClassicalHeader(),
-            headerIndex: headerIndex,
-            footer: footer ?? WsyClassicalFooter(),
-            scrollDirection: scrollDirection,
-            reverse: reverse,
-            scrollController: scrollController,
-            primary: primary,
-            shrinkWrap: shrinkWrap,
-            center: center,
-            anchor: anchor,
-            cacheExtent: cacheExtent,
-            semanticChildCount: semanticChildCount,
-            dragStartBehavior: dragStartBehavior,
-            firstRefresh: firstRefresh,
-            firstRefreshWidget: firstRefreshWidget,
-            emptyWidget: emptyWidget,
-            topBouncing: topBouncing,
-            bottomBouncing: bottomBouncing,
-            slivers: slivers);
+      key: key,
+      controller: controller,
+      onRefresh: onRefresh,
+      onLoad: onLoad,
+      enableControlFinishRefresh: enableControlFinishRefresh,
+      enableControlFinishLoad: enableControlFinishLoad,
+      taskIndependence: taskIndependence,
+      header: header ?? WsyClassicalHeader(),
+      headerIndex: headerIndex,
+      footer: footer ?? WsyClassicalFooter(),
+      scrollDirection: scrollDirection,
+      reverse: reverse,
+      scrollController: scrollController,
+      primary: primary,
+      shrinkWrap: shrinkWrap,
+      center: center,
+      anchor: anchor,
+      cacheExtent: cacheExtent,
+      semanticChildCount: semanticChildCount,
+      dragStartBehavior: dragStartBehavior,
+      firstRefresh: firstRefresh,
+      firstRefreshWidget: firstRefreshWidget,
+      emptyWidget: emptyWidget,
+      topBouncing: topBouncing,
+      bottomBouncing: bottomBouncing,
+      slivers: slivers);
 
   /// 自定义构造器
   /// 用法灵活,但需将physics、header和footer放入列表中
@@ -84,26 +84,26 @@ class WsyRefresh extends EasyRefresh {
     int childCount,
     @required IndexedWidgetBuilder builder,
   }) : this.custom(
-            key: key,
-            controller: controller,
-            onRefresh: onRefresh,
-            emptyWidget:emptyWidget,
-            onLoad: onLoad,
-            enableControlFinishLoad: enableControlFinishLoad,
-            enableControlFinishRefresh: enableControlFinishRefresh,
-            taskIndependence: taskIndependence,
-            scrollController: scrollController,
-            header: header ?? WsyClassicalHeader(),
-            footer: footer ?? WsyClassicalFooter(),
-            firstRefresh: firstRefresh,
-            topBouncing: topBouncing,
-            bottomBouncing: bottomBouncing,
-            slivers: [
-              SliverList(
-                delegate:
-                    SliverChildBuilderDelegate(builder, childCount: childCount),
-              )
-            ]);
+      key: key,
+      controller: controller,
+      onRefresh: onRefresh,
+      emptyWidget: emptyWidget,
+      onLoad: onLoad,
+      enableControlFinishLoad: enableControlFinishLoad,
+      enableControlFinishRefresh: enableControlFinishRefresh,
+      taskIndependence: taskIndependence,
+      scrollController: scrollController,
+      header: header ?? WsyClassicalHeader(),
+      footer: footer ?? WsyClassicalFooter(),
+      firstRefresh: firstRefresh,
+      topBouncing: topBouncing,
+      bottomBouncing: bottomBouncing,
+      slivers: [
+        SliverList(
+          delegate:
+          SliverChildBuilderDelegate(builder, childCount: childCount),
+        )
+      ]);
 
   /// 自定义构造器
   /// 用法灵活,但需将physics、header和footer放入列表中
@@ -116,9 +116,9 @@ class WsyRefresh extends EasyRefresh {
     bool enableControlFinishLoad = false,
     bool taskIndependence = false,
     int crossAxisCount,
-    double mainAxisSpacing=0,
-    double crossAxisSpacing=0,
-    double childAspectRatio=1,
+    double mainAxisSpacing = 0,
+    double crossAxisSpacing = 0,
+    double childAspectRatio = 1,
     ScrollController scrollController,
     WsyClassicalHeader header,
     WsyClassicalFooter footer,
@@ -126,33 +126,43 @@ class WsyRefresh extends EasyRefresh {
     bool firstRefresh,
     bool topBouncing = true,
     bool bottomBouncing = true,
+    EdgeInsetsGeometry padding,
     int childCount,
     @required IndexedWidgetBuilder builder,
   }) : this.custom(
-            key: key,
-            controller: controller,
-            onRefresh: onRefresh,
-            onLoad: onLoad,
-            enableControlFinishLoad: enableControlFinishLoad,
-            enableControlFinishRefresh: enableControlFinishRefresh,
-            taskIndependence: taskIndependence,
-            scrollController: scrollController,
-            header: header ,
-            footer: footer ?? WsyClassicalFooter(),
-            firstRefresh: firstRefresh,
-            topBouncing: topBouncing,
-            bottomBouncing: bottomBouncing,
-            emptyWidget:emptyWidget,
-            slivers: [
-              SliverGrid(
-                  delegate: SliverChildBuilderDelegate(builder,
-                      childCount: childCount),
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: crossAxisCount,
-                      mainAxisSpacing: mainAxisSpacing,
-                      crossAxisSpacing: crossAxisSpacing,
-                      childAspectRatio: childAspectRatio))
-            ]);
+      key: key,
+      controller: controller,
+      onRefresh: onRefresh,
+      onLoad: onLoad,
+      enableControlFinishLoad: enableControlFinishLoad,
+      enableControlFinishRefresh: enableControlFinishRefresh,
+      taskIndependence: taskIndependence,
+      scrollController: scrollController,
+      header: header,
+      footer: footer ?? WsyClassicalFooter(),
+      firstRefresh: firstRefresh,
+      topBouncing: topBouncing,
+      bottomBouncing: bottomBouncing,
+      emptyWidget: emptyWidget,
+      slivers: [
+        padding == null ?
+        SliverGrid(
+            delegate: SliverChildBuilderDelegate(builder,
+                childCount: childCount),
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: crossAxisCount,
+                mainAxisSpacing: mainAxisSpacing,
+                crossAxisSpacing: crossAxisSpacing,
+                childAspectRatio: childAspectRatio)) :
+        SliverPadding(padding: padding, sliver: SliverGrid(
+            delegate: SliverChildBuilderDelegate(builder,
+                childCount: childCount),
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: crossAxisCount,
+                mainAxisSpacing: mainAxisSpacing,
+                crossAxisSpacing: crossAxisSpacing,
+                childAspectRatio: childAspectRatio)))
+      ]);
 }
 
 class WsyClassicalHeader extends WsyHeader {
@@ -177,25 +187,25 @@ class WsyClassicalHeader extends WsyHeader {
     Color textColor = Colors.grey,
     Color infoColor = Colors.grey,
   }) : super(
-            extent: extent,
-            triggerDistance: triggerDistance,
-            float: float,
-            completeDuration: completeDuration,
-            enableInfiniteRefresh: enableInfiniteRefresh,
-            enableHapticFeedback: enableHapticFeedback,
-            key: key,
-            alignment: alignment,
-            refreshText: refreshText,
-            refreshReadyText: refreshReadyText,
-            refreshingText: refreshingText,
-            refreshedText: refreshedText,
-            refreshFailedText: refreshFailedText,
-            noMoreText: noMoreText,
-            showInfo: showInfo,
-            infoText: infoText,
-            bgColor: bgColor,
-            textColor: textColor,
-            infoColor: infoColor);
+      extent: extent,
+      triggerDistance: triggerDistance,
+      float: float,
+      completeDuration: completeDuration,
+      enableInfiniteRefresh: enableInfiniteRefresh,
+      enableHapticFeedback: enableHapticFeedback,
+      key: key,
+      alignment: alignment,
+      refreshText: refreshText,
+      refreshReadyText: refreshReadyText,
+      refreshingText: refreshingText,
+      refreshedText: refreshedText,
+      refreshFailedText: refreshFailedText,
+      noMoreText: noMoreText,
+      showInfo: showInfo,
+      infoText: infoText,
+      bgColor: bgColor,
+      textColor: textColor,
+      infoColor: infoColor);
 }
 
 class WsyClassicalFooter extends WsyFooter {
@@ -220,26 +230,26 @@ class WsyClassicalFooter extends WsyFooter {
     Color textColor = Colors.grey,
     Color infoColor = Colors.teal,
   }) : super(
-          extent: extent,
-          triggerDistance: triggerDistance,
-          float: float,
-          completeDuration: completeDuration,
-          enableInfiniteLoad: enableInfiniteLoad,
-          enableHapticFeedback: enableHapticFeedback,
-          key: key,
-          alignment: alignment,
-          loadText: loadText,
-          loadReadyText: loadReadyText,
-          loadingText: loadingText,
-          loadedText: loadedText,
-          loadFailedText: loadFailedText,
-          noMoreText: noMoreText,
-          showInfo: showInfo,
-          infoText: infoText,
-          bgColor: bgColor,
-          textColor: textColor,
-          infoColor: infoColor,
-        );
+    extent: extent,
+    triggerDistance: triggerDistance,
+    float: float,
+    completeDuration: completeDuration,
+    enableInfiniteLoad: enableInfiniteLoad,
+    enableHapticFeedback: enableHapticFeedback,
+    key: key,
+    alignment: alignment,
+    loadText: loadText,
+    loadReadyText: loadReadyText,
+    loadingText: loadingText,
+    loadedText: loadedText,
+    loadFailedText: loadFailedText,
+    noMoreText: noMoreText,
+    showInfo: showInfo,
+    infoText: infoText,
+    bgColor: bgColor,
+    textColor: textColor,
+    infoColor: infoColor,
+  );
 }
 
 class WsyRefreshController extends EasyRefreshController {}
