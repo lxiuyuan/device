@@ -7,11 +7,13 @@ import 'dialog.dart';
 
 class ToastUtils {
   static void showError(String text) {
-    show(text, icon: "drive_images/icon_auto_alarm.png");
+//    show(text, icon: "drive_images/icon_auto_alarm.png");
+    show(text,);
   }
 
   static void showSuccess(String text) {
-    show(text, icon: "drive_images/icon_success.png");
+//    show(text, icon: "drive_images/icon_success.png");
+    show(text,);
   }
 
   static Timer _timer;
