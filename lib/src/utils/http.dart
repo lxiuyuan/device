@@ -28,14 +28,14 @@ class HttpUtils {
     };
   }
 
-  static Future<String> getString(String url) async{
-
-    Response<String> response = await _http.get(url);
-    if (response.statusCode == HttpStatus.ok) {
-      return response.data.toString();
-    }
-    return "";
-  }
+//  static Future<String> getString(String url) async{
+//
+//    Response<String> response = await _http.get(url);
+//    if (response.statusCode == HttpStatus.ok) {
+//      return response.data.toString();
+//    }
+//    return "";
+//  }
 
   static Options _createOptions(
       HttpOption ho) {
