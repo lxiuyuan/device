@@ -28,10 +28,10 @@ class HttpUtils {
     };
   }
 
-  static Future<String> getString(String url){
+  static Future<String> getString(String url) async{
 
     Response<String> response = await _http.get(url);
-    if (response.statusCode == HttpStatus.ok) {\
+    if (response.statusCode == HttpStatus.ok) {
       return response.data.toString();
     }
     returen "";
