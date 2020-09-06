@@ -28,6 +28,15 @@ class HttpUtils {
     };
   }
 
+  static Future<String> getString(String url){
+
+    Response<String> response = await _http.get(url);
+    if (response.statusCode == HttpStatus.ok) {\
+      return response.data.toString();
+    }
+    returen "";
+  }
+
   static Options _createOptions(
       HttpOption ho) {
     var options = Options(
