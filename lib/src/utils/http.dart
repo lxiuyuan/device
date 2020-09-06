@@ -34,7 +34,7 @@ class HttpUtils {
     if (response.statusCode == HttpStatus.ok) {
       return response.data.toString();
     }
-    returen "";
+    return "";
   }
 
   static Options _createOptions(
