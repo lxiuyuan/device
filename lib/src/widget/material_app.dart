@@ -44,9 +44,7 @@ class MvcMaterialApp extends MaterialApp {
           initialRoute: initialRoute,
           onGenerateRoute: onGenerateRoute,
           onUnknownRoute: onUnknownRoute,
-          navigatorObservers: <NavigatorObserver>[
-            DriveNavigatorManager.manager
-          ],
+          navigatorObservers: (navigatorObservers),
           builder: (context, child) {
 //            WsyMaterialApp.context=context;
             if (child == null) {
